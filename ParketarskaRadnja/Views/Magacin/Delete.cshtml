@@ -1,0 +1,45 @@
+﻿@model ParketarskaRadnja.Models.Magacin
+
+@{
+    ViewBag.Title = "Obriši unos iz magacina";
+}
+
+<center><h2>Obriši unos iz magacina</h2></center>
+
+<center>
+    <h3>Da li ste sigurni da želite da obrišete ovaj unos iz magacina?</h3>
+</center>
+<div>
+    <h4>Podaci o unosi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Proizvod.NazivProizvoda)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Proizvod.NazivProizvoda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KolicinaNaZalihi)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.KolicinaNaZalihi)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.StanjeID)
+
+        <div class="form-group">
+            <input type="submit" value="Obriši" class="btn btn-danger" /> |
+            @Html.ActionLink("Nazad na listu", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

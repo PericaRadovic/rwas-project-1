@@ -1,0 +1,31 @@
+﻿@model ParketarskaRadnja.Models.Narudzbine
+
+@{
+    ViewBag.Title = "Detalji narudžbine";
+}
+
+<h2>Detalji narudžbine</h2>
+
+<div>
+    <center><h4>Narudžbina</h4></center>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Klijent.Ime)  @Html.DisplayNameFor(model => model.Klijent.Prezime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Klijent.Ime)  @Html.DisplayFor(model => model.Klijent.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumNarudzbine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatumNarudzbine)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Nazad na listu</a>
+</div>

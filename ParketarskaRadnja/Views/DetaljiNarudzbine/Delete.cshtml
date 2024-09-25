@@ -1,0 +1,57 @@
+﻿@model ParketarskaRadnja.Models.DetaljiNarudzbine
+
+@{
+    ViewBag.Title = "Obriši detalj narudžbine";
+}
+
+<center><h2>Obriši detalj narudžbine?</h2></center>
+
+<div>
+    <h4>Detalji narudžbine</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NarudzbinaID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NarudzbinaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProizvodID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProizvodID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kolicina)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kolicina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenaPoJedinici)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CenaPoJedinici)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "DetaljiNarudzbine", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("narudzbinaId", Model.NarudzbinaID)
+        @Html.Hidden("proizvodId", Model.ProizvodID)
+
+        <div class="form-group">
+            <input type="submit" value="Obriši" class="btn btn-danger" /> |
+            @Html.ActionLink("Nazad na listu", "Index", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

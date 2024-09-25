@@ -1,0 +1,37 @@
+﻿@model ParketarskaRadnja.Models.Proizvod
+
+@{
+    ViewBag.Title = "Detalji proizvoda";
+}
+
+<h2>Detalji proizvoda</h2>
+
+<div>
+    <center><h4>Proizvod</h4></center>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NazivProizvoda)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NazivProizvoda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cena)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cena)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a href="@Url.Action("Index")" class="btn btn-primary">Nazad na listu</a>
+</div>

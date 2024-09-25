@@ -1,0 +1,46 @@
+﻿@model ParketarskaRadnja.Models.DetaljiNarudzbine
+
+@{
+    ViewBag.Title = "Detalji detalja narudžbine";
+}
+
+<center><h2>Detalji detalja narudžbine</h2></center>
+
+<div>
+    <h4>Narudžbina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NarudzbinaID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NarudzbinaID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProizvodID)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ProizvodID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kolicina)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kolicina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CenaPoJedinici)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CenaPoJedinici)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Izmeni", "Edit", new { narudzbinaId = Model.NarudzbinaID, proizvodId = Model.ProizvodID }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Obriši", "Delete", new { narudzbinaId = Model.NarudzbinaID, proizvodId = Model.ProizvodID }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Nazad na listu", "Index", null, new { @class = "btn btn-primary" })
+</div>

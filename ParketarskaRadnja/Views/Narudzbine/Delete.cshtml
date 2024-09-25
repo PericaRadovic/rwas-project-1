@@ -1,0 +1,43 @@
+﻿@model ParketarskaRadnja.Models.Narudzbine
+
+@{
+    ViewBag.Title = "Obriši narudžbinu";
+}
+
+<center><h2>Obriši narudžbinu?</h2></center>
+
+<div>
+    <h4>Narudžbina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Klijent.Ime) @Html.DisplayNameFor(model => model.Klijent.Prezime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Klijent.Ime) @Html.DisplayFor(model => model.Klijent.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatumNarudzbine)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DatumNarudzbine)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Narudzbine", new { id = Model.NarudzbinaID }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Obriši" class="btn btn-danger" />
+                @Html.ActionLink("Nazad na listu", "Index", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

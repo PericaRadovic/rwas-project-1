@@ -1,0 +1,65 @@
+﻿@model PagedList.IPagedList<ParketarskaRadnja.Models.Magacin>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Magacin";
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<center><h2>Magacin</h2></center>
+
+<p>
+    @using (Html.BeginForm("Index", "Magacin", FormMethod.Get))
+    {
+    <p>
+        Pretraga po nazivu proizvoda: @Html.TextBox("searchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Pretraži" class="btn btn-primary" />
+    </p>
+}
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.ActionLink("Naziv proizvoda|Sort", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th>
+                    @Html.ActionLink("Količina na zalihama|Sort", "Index", new { sortOrder = ViewBag.QuantitySortParm, currentFilter = ViewBag.CurrentFilter })
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proizvod.NazivProizvoda)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KolicinaNaZalihi)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Detalji", "Details", new { id = item.StanjeID }, new { @class = "btn btn-primary" })
+                        @if (isAdmin)
+                        {
+                            @:| @Html.ActionLink("Izmeni", "Edit", new { id = item.StanjeID }, new { @class = "btn btn-primary" })
+                            @:| @Html.ActionLink("Obriši", "Delete", new { id = item.StanjeID }, new { @class = "btn btn-danger" })
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+
+    @if (isAdmin)
+    {
+        <p>
+            @Html.ActionLink("Dodaj novi unos u magacin", "Create", null, new { @class = "btn btn-success" })
+        </p>
+    }

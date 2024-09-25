@@ -1,0 +1,45 @@
+﻿@model ParketarskaRadnja.Models.Magacin
+
+@{
+    ViewBag.Title = "Izmena unosa u magacin";
+}
+
+<center><h2>Izmena unosa u magacin</h2></center>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Podaci o unosi</h4>
+        <hr />
+        @Html.HiddenFor(model => model.StanjeID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProizvodID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ProizvodID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProizvodID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KolicinaNaZalihi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.KolicinaNaZalihi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KolicinaNaZalihi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sačuvaj izmene" class="btn btn-primary" />
+                @Html.ActionLink("Odustani", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

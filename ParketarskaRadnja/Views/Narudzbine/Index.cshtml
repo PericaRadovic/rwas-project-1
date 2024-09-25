@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ParketarskaRadnja.Models.Narudzbine>
+
+@{
+    ViewBag.Title = "Narudžbine";
+    bool isAdmin = User.IsInRole("Admin");
+}
+
+<center><h2>Narudžbine</h2></center>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NarudzbinaID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Klijent.Ime)  @Html.DisplayNameFor(model=>model.Klijent.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DatumNarudzbine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NarudzbinaID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Klijent.Ime)  @Html.DisplayFor(modelItem => item.Klijent.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DatumNarudzbine)
+                </td>
+                <td>
+                    @Html.ActionLink("Detalji", "Details", new { id = item.NarudzbinaID }, new { @class = "btn btn-primary" })
+                    @if (isAdmin)
+                    {
+                       @:| @Html.ActionLink("Izmeni", "Edit", new { id = item.NarudzbinaID }, new { @class = "btn btn-primary" })
+                       @:| @Html.ActionLink("Obriši", "Delete", new { id = item.NarudzbinaID }, new { @class = "btn btn-danger" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (isAdmin)
+            {
+                <p>
+                    @Html.ActionLink("Kreiraj novu narudžbinu", "Create", null, new { @class = "btn btn-success" })
+                </p>
+            }
+

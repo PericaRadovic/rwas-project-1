@@ -1,0 +1,62 @@
+﻿@model ParketarskaRadnja.Models.Klijent
+
+@{
+    ViewBag.Title = "Obriši klijenta";
+}
+
+<center><h2>Obriši klijenta?</h2></center>
+
+<div>
+    <h4>Klijent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresa)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adresa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrojTelefona)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BrojTelefona)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm("Delete", "Klijent", new { id = Model.KlijentID }, FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <input type="submit" value="Obriši" class="btn btn-danger" /> |
+            @Html.ActionLink("Odustani", "Index",null, new { @class = "btn btn-default" })
+        </div>
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

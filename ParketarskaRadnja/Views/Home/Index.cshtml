@@ -1,0 +1,66 @@
+﻿@{
+    ViewBag.Title = "Dobrodošli u parketarsku radnju";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #deb887; /* Boja parketa */
+        }
+
+        .header {
+            background-color: #8b4513; /* Tamnija boja drveta */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius:20px;
+        }
+
+        .description {
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1><em>Dobrodošli u parketarsku radnju</em></h1>
+    </div>
+    <div class="description">
+        <h4><em>Naša radnja nudi širok asortiman visokokvalitetnih parketa i podova za vaš dom i poslovni prostor. Naši parketi su izrađeni od najfinijeg drveta, pružajući trajnost i eleganciju svakom prostoru. Bilo da renovirate svoj dom ili opremate poslovni prostor, kod nas ćete pronaći idealno rešenje za podove.</em></h4>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <img src="~/Content/images/parket.jpg" alt="Slika parketa" class="img-fluid w-50 mt-4">
+        </div>
+    </div>
+
+    <main>
+        <div class="container pt-4">
+            <div class="row">
+                <div class="col-md">
+                    <h4 class="p-2">
+                        <em>Naši stručnjaci su vam na raspolaganju za sve savete i pomoć pri odabiru najboljeg parketa za vaš prostor. Uz našu pomoć, odabir i ugradnja parketa postaju jednostavni i brzi.</em>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="container pt-2">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md text-center">
+                    <img src="~/Content/images/logo.png" alt="Logo" class="img-fluid w-50">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
